@@ -39,16 +39,24 @@ body{overflow-x:hidden}
 .mobile-view{display:none}
 .mobile-canvas{position:relative;width:100%;max-width:720px;margin:0 auto;line-height:0;background:#fff}
 .mobile-art{display:block;width:100%;height:auto}
-.mobile-nav-cover{position:absolute;left:0;right:0;top:11.7%;height:10.0%;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,.80));z-index:5}
+.mobile-nav-cover{position:absolute;left:0;right:0;top:15.0%;height:11.5%;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,.80));z-index:5}
 .mobile-hit{position:absolute;z-index:10;display:flex;align-items:center;justify-content:center;text-decoration:none;color:transparent;background:transparent;border:0;border-radius:999px}
-.mobile-home{left:2.8%;top:11.9%;width:26%;height:3.9%}
-.mobile-about{left:28.3%;top:11.9%;width:34%;height:3.9%}
-.mobile-products{left:62.0%;top:11.9%;width:35%;height:3.9%}
-.mobile-services{left:4.0%;top:16.1%;width:30%;height:3.9%}
-.mobile-contact{left:34.0%;top:16.1%;width:31%;height:3.9%}
-.mobile-location{left:65.0%;top:16.1%;width:31%;height:3.9%}
-.mobile-book{left:48%;top:38.8%;width:45%;height:4.5%}
-.mobile-menu{right:2%;top:0.8%;width:9%;height:4.5%}
+.mobile-carousel{width:100%;max-width:720px;margin:0 auto;padding:10px 12px 18px;background:#fff;overflow:hidden;position:relative}
+.mobile-carousel .mviewport{overflow:hidden;border-radius:18px;box-shadow:0 3px 13px rgba(0,0,0,.14);background:#fff;padding:8px 0}
+.mobile-carousel .mtrack{display:flex;gap:10px;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
+.mobile-card{flex:0 0 145px;height:112px;border-radius:13px;overflow:hidden;background:#fff;box-shadow:0 1px 7px rgba(0,0,0,.15);padding:3px}
+.mobile-card img{display:block;width:100%;height:100%;object-fit:contain}
+.mobile-carousel .marrow{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;border-radius:50%;background:#075b26;color:#fff;font-size:32px;line-height:36px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.mobile-carousel .mnext{right:8px}.mobile-carousel .mprev{left:8px}
+.mobile-dots{text-align:center;padding-top:8px}.mobile-dots span{display:inline-block;width:8px;height:8px;border-radius:50%;background:#c7c7c7;margin:0 5px}.mobile-dots span:first-child{background:#08722e}
+.mobile-home{left:2.8%;top:15.7%;width:26%;height:4.6%}
+.mobile-about{left:28.3%;top:15.7%;width:34%;height:4.6%}
+.mobile-products{left:62.0%;top:15.7%;width:35%;height:4.6%}
+.mobile-services{left:13.0%;top:20.9%;width:30%;height:4.6%}
+.mobile-contact{left:43.0%;top:20.9%;width:31%;height:4.6%}
+.mobile-location{left:65.0%;top:20.9%;width:31%;height:4.6%}
+.mobile-book{left:48%;top:49.8%;width:45%;height:5.5%}
+.mobile-menu{right:2%;top:0.8%;width:9%;height:4.8%}
 
 @media(max-width:700px){
   html,body{overflow-x:hidden}
@@ -62,12 +70,12 @@ body{overflow-x:hidden}
   <div class="desktop-view">
     <main class="hero">
       <img class="hero-img" src="assets/top-design.png" alt="Suvi Nutrition Center">
-      <a class="hit home" href="#home" aria-label="Home">Home</a>
-      <a class="hit about" href="#about" aria-label="About Vivega">About Vivega</a>
-      <a class="hit products" href="#products" aria-label="Our Products">Our Products</a>
-      <a class="hit services" href="#services" aria-label="Our Services">Our Services</a>
-      <a class="hit contact" href="#contact" aria-label="Contact Us">Contact Us</a>
-      <a class="hit location" href="#location" aria-label="Our Location">Our Location</a>
+      <a class="hit home" href="https://wa.me/916382401380?text=Hello%20Suvi%20Nutrition%20Center%2C%20I%20would%20like%20to%20know%20more." aria-label="Home">Home</a>
+      <a class="hit about" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20know%20about%20Vivega%20and%20your%20nutrition%20services." aria-label="About Vivega">About Vivega</a>
+      <a class="hit products" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20know%20about%20your%20products." aria-label="Our Products">Our Products</a>
+      <a class="hit services" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20know%20about%20your%20services." aria-label="Our Services">Our Services</a>
+      <a class="hit contact" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20contact%20Suvi%20Nutrition%20Center." aria-label="Contact Us">Contact Us</a>
+      <a class="hit location" href="https://wa.me/916382401380?text=Hello%2C%20please%20share%20your%20location%20and%20clinic%20details." aria-label="Our Location">Our Location</a>
     </main>
 
     <section class="carousel" id="services" aria-label="Nutrition services">
@@ -91,17 +99,35 @@ body{overflow-x:hidden}
 
   <main class="mobile-view" aria-label="Suvi Nutrition Center mobile website">
     <div class="mobile-canvas">
-      <img class="mobile-art" src="assets/mobile-home.png" alt="Suvi Nutrition Center mobile homepage">
+      <img class="mobile-art" src="assets/mobile-top.png" alt="Suvi Nutrition Center mobile homepage">
       <div class="mobile-nav-cover" aria-hidden="true"></div>
-      <a class="mobile-hit mobile-home" href="#home" aria-label="Home"></a>
-      <a class="mobile-hit mobile-about" href="#about" aria-label="About Vivega"></a>
-      <a class="mobile-hit mobile-products" href="#products" aria-label="Our Products"></a>
-      <a class="mobile-hit mobile-services" href="#services" aria-label="Our Services"></a>
-      <a class="mobile-hit mobile-contact" href="#contact" aria-label="Contact Us"></a>
-      <a class="mobile-hit mobile-location" href="#location" aria-label="Our Location"></a>
-      <a class="mobile-hit mobile-book" href="#appointment" aria-label="Book Appointment Now"></a>
-      <a class="mobile-hit mobile-menu" href="#menu" aria-label="Menu"></a>
+      <a class="mobile-hit mobile-home" href="https://wa.me/916382401380?text=Hello%20Suvi%20Nutrition%20Center%2C%20I%20would%20like%20to%20know%20more." aria-label="Home"></a>
+      <a class="mobile-hit mobile-about" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20know%20about%20Vivega%20and%20your%20nutrition%20services." aria-label="About Vivega"></a>
+      <a class="mobile-hit mobile-products" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20know%20about%20your%20products." aria-label="Our Products"></a>
+      <a class="mobile-hit mobile-services" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20know%20about%20your%20services." aria-label="Our Services"></a>
+      <a class="mobile-hit mobile-contact" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20contact%20Suvi%20Nutrition%20Center." aria-label="Contact Us"></a>
+      <a class="mobile-hit mobile-location" href="https://wa.me/916382401380?text=Hello%2C%20please%20share%20your%20location%20and%20clinic%20details." aria-label="Our Location"></a>
+      <a class="mobile-hit mobile-book" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20book%20a%20nutrition%20appointment." aria-label="Book Appointment Now"></a>
+      <a class="mobile-hit mobile-menu" href="https://wa.me/916382401380?text=Hello%2C%20please%20share%20the%20menu%20and%20available%20services." aria-label="Menu"></a>
     </div>
+    <section class="mobile-carousel" aria-label="Nutrition services carousel">
+      <button class="marrow mprev" type="button" aria-label="Previous">‹</button>
+      <div class="mviewport">
+        <div class="mtrack" id="mtrack">
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Weight%20Management."><img src="assets/cards/card-1.jpg" alt="Weight Management"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Digestive%20Health."><img src="assets/cards/card-2.jpg" alt="Digestive Health"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Skin%20Health."><img src="assets/cards/card-3.jpg" alt="Skin Health"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Immunity%20Boost."><img src="assets/cards/card-4.jpg" alt="Immunity Boost"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Kids%20Nutrition."><img src="assets/cards/card-5.jpg" alt="Kids Nutrition"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Joint%20Health."><img src="assets/cards/card-6.jpg" alt="Joint Health"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20Healthy%20Recipes%20guidance."><img src="assets/cards/card-7.jpg" alt="Healthy Recipes"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Lifestyle%20Guidance."><img src="assets/cards/card-8.jpg" alt="Lifestyle Guidance"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Stress%20Management."><img src="assets/cards/card-9.jpg" alt="Stress Management"></a>
+        </div>
+      </div>
+      <button class="marrow mnext" type="button" aria-label="Next">›</button>
+      <div class="mobile-dots"><span></span><span></span><span></span><span></span></div>
+    </section>
   </main>
 </div>
 <script>
@@ -126,6 +152,28 @@ if(track){
   prev.onclick=()=>{const lastCard=cards[cards.length-1],step=stepSize(lastCard);track.insertBefore(lastCard,track.firstElementChild);cards.unshift(lastCard);cards.pop();x+=step};
   next.onclick=()=>{const first=cards.shift(),step=stepSize(first);cards.push(first);track.appendChild(first);x-=step};
   requestAnimationFrame(animate);
+}
+
+const mtrack=document.getElementById('mtrack');
+const mprev=document.querySelector('.mprev');
+const mnext=document.querySelector('.mnext');
+if(mtrack){
+  let mx=0, mpaused=false, mlast=performance.now();
+  const mstep=155;
+  mtrack.addEventListener('touchstart',()=>mpaused=true,{passive:true});
+  mtrack.addEventListener('touchend',()=>mpaused=false,{passive:true});
+  function ma(now){
+    const dt=Math.min(40,now-mlast); mlast=now;
+    if(!mpaused){
+      mx-=0.42*dt/16.67;
+      if(Math.abs(mx)>=mstep){ const first=mtrack.firstElementChild; mtrack.appendChild(first); mx+=mstep; }
+      mtrack.style.transform=`translate3d(${mx}px,0,0)`;
+    }
+    requestAnimationFrame(ma);
+  }
+  mprev.onclick=()=>{const last=mtrack.lastElementChild;mtrack.insertBefore(last,mtrack.firstElementChild);mx-=mstep};
+  mnext.onclick=()=>{const first=mtrack.firstElementChild;mtrack.appendChild(first);mx+=mstep};
+  requestAnimationFrame(ma);
 }
 </script>
 </body>
