@@ -9,36 +9,22 @@
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;min-height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif}
 body{overflow-x:hidden}
-.page{position:relative;width:100%;min-height:100vh;background:#fff}
+.page{width:100%;min-height:100vh;background:#fff}
 
-/* ---------------- DESKTOP ---------------- */
+/* DESKTOP: preserve the existing project design */
+.desktop-view{display:block;position:relative;width:100%;height:100vh;overflow:hidden;background:#fff}
 .hero{position:absolute;left:0;top:0;width:100vw;height:calc(100vh - 128px);overflow:hidden;line-height:0}
 .hero-img{display:block;width:100%;height:100%;object-fit:fill}
-.hit{
-position:absolute;z-index:20;display:flex;align-items:center;justify-content:center;
-height:7.2%;border-radius:999px;cursor:pointer;text-decoration:none;
-font-family:Arial,Helvetica,sans-serif;font-size:clamp(13px,1.05vw,19px);font-weight:800;
-letter-spacing:.1px;color:#fff;
-background:linear-gradient(180deg,#39d4ff 0%,#11a9ef 35%,#0788db 68%,#0568c2 100%);
-border:2px solid #00c7ff;
-box-shadow:inset 0 2px 2px rgba(255,255,255,.8),inset 0 -3px 5px rgba(0,47,130,.55),0 3px 7px rgba(0,0,0,.3);
-text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:nowrap
-}
+.hit{position:absolute;z-index:20;display:flex;align-items:center;justify-content:center;height:7.2%;border-radius:999px;cursor:pointer;text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-size:clamp(13px,1.05vw,19px);font-weight:800;letter-spacing:.1px;color:#fff;background:linear-gradient(180deg,#39d4ff 0%,#11a9ef 35%,#0788db 68%,#0568c2 100%);border:2px solid #00c7ff;box-shadow:inset 0 2px 2px rgba(255,255,255,.8),inset 0 -3px 5px rgba(0,47,130,.55),0 3px 7px rgba(0,0,0,.3);text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:nowrap}
 .hit:before{font-size:1em;margin-right:8px}
-.hit.home{left:3.5%;top:31.5%;width:12.8%}
+.hit.home{left:3.5%;top:31.5%;width:12.8%;outline:8px solid rgba(255,255,255,.92)}
 .hit.about{left:16.5%;top:31.5%;width:12.8%}
 .hit.products{left:29.5%;top:31.5%;width:12.8%}
 .hit.services{left:50%;top:31.5%;width:12.8%}
 .hit.contact{left:63%;top:31.5%;width:12.8%}
 .hit.location{left:76%;top:31.5%;width:12.8%}
-.hit.products:before{content:"●";font-size:.72em}
-.hit.home:before{content:"⌂"}
-.hit.about:before{content:"●";font-size:.72em}
-.hit.services:before{content:"♥"}
-.hit.contact:before{content:"☎"}
-.hit.location:before{content:"●";font-size:.72em}
+.hit.products:before{content:"●";font-size:.72em}.hit.home:before{content:"⌂"}.hit.about:before{content:"●";font-size:.72em}.hit.services:before{content:"♥"}.hit.contact:before{content:"☎"}.hit.location:before{content:"●";font-size:.72em}
 .hit:hover{filter:brightness(1.05);transform:translateY(-1px)}
-
 .carousel{position:absolute;left:0;bottom:0;width:100vw;height:128px;padding:7px 3.1% 8px;background:#fff;overflow:hidden}
 .viewport{position:relative;width:100%;height:100%;overflow:hidden;border-radius:18px;box-shadow:0 3px 13px rgba(0,0,0,.14);background:#fff}
 .track{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;gap:9px;will-change:transform}
@@ -47,145 +33,100 @@ text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:nowrap
 .arrow{position:absolute;z-index:10;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:#075b26;color:#fff;font-size:34px;line-height:38px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .prev{left:1%}.next{right:1%}
 
-/* Mobile reference design */
-.mobile-design{display:none}
+/* MOBILE: use the supplied professional mobile reference as the visual base.
+   This prevents the old desktop artwork from being stretched into a distorted
+   portrait layout. Transparent HTML hit areas keep the important controls usable. */
+.mobile-view{display:none}
+.mobile-canvas{position:relative;width:100%;max-width:720px;margin:0 auto;line-height:0;background:#fff}
+.mobile-art{display:block;width:100%;height:auto}
+.mobile-nav-cover{position:absolute;left:0;right:0;top:11.7%;height:10.0%;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,.80));z-index:5}
+.mobile-hit{position:absolute;z-index:10;display:flex;align-items:center;justify-content:center;text-decoration:none;color:transparent;background:transparent;border:0;border-radius:999px}
+.mobile-home{left:2.8%;top:11.9%;width:26%;height:3.9%}
+.mobile-about{left:28.3%;top:11.9%;width:34%;height:3.9%}
+.mobile-products{left:62.0%;top:11.9%;width:35%;height:3.9%}
+.mobile-services{left:4.0%;top:16.1%;width:30%;height:3.9%}
+.mobile-contact{left:34.0%;top:16.1%;width:31%;height:3.9%}
+.mobile-location{left:65.0%;top:16.1%;width:31%;height:3.9%}
+.mobile-book{left:48%;top:38.8%;width:45%;height:4.5%}
+.mobile-menu{right:2%;top:0.8%;width:9%;height:4.5%}
 
-/* ---------------- MOBILE ---------------- */
 @media(max-width:700px){
-  html,body{overflow-x:hidden;overflow-y:auto}
-  .page{width:100%;min-height:100vh;height:auto;overflow:visible}
-  .hero,.carousel{display:none}
-
-  .mobile-design{
-    display:block;
-    position:relative;
-    width:100%;
-    line-height:0;
-    background:#fff;
-  }
-  .mobile-design > img{
-    display:block;
-    width:100%;
-    height:auto;
-    max-width:none;
-    user-select:none;
-    -webkit-user-drag:none;
-  }
-
-  /* Transparent interactive areas placed over the supplied mobile reference */
-  .m-hit{
-    position:absolute;
-    z-index:5;
-    display:block;
-    background:transparent;
-    border:0;
-    border-radius:999px;
-    padding:0;
-    margin:0;
-    cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .m-home{left:2.2%;top:15.7%;width:19.8%;height:2.8%}
-  .m-about{left:23.0%;top:15.7%;width:20.5%;height:2.8%}
-  .m-services{left:44.5%;top:15.7%;width:29.5%;height:2.8%}
-  .m-contact{left:12.0%;top:19.0%;width:27.5%;height:2.8%}
-  .m-location{left:39.5%;top:19.0%;width:31.0%;height:2.8%}
-  .m-book{left:50.0%;top:30.2%;width:36.0%;height:3.6%}
-
-  /* Keep the mobile page easy to use on very small screens */
-  @media(max-width:360px){
-    .m-home,.m-about,.m-services{height:3.1%}
-    .m-contact,.m-location{height:3.1%}
-  }
-}
-@media(min-width:701px){
-  .hit.home{
-    outline:8px solid rgba(255,255,255,.92);
-    outline-offset:0;
-  }
+  html,body{overflow-x:hidden}
+  .desktop-view{display:none}
+  .mobile-view{display:block;width:100%;min-height:100vh;background:#fff}
 }
 </style>
 </head>
 <body>
 <div class="page">
+  <div class="desktop-view">
+    <main class="hero">
+      <img class="hero-img" src="assets/top-design.png" alt="Suvi Nutrition Center">
+      <a class="hit home" href="#home" aria-label="Home">Home</a>
+      <a class="hit about" href="#about" aria-label="About Vivega">About Vivega</a>
+      <a class="hit products" href="#products" aria-label="Our Products">Our Products</a>
+      <a class="hit services" href="#services" aria-label="Our Services">Our Services</a>
+      <a class="hit contact" href="#contact" aria-label="Contact Us">Contact Us</a>
+      <a class="hit location" href="#location" aria-label="Our Location">Our Location</a>
+    </main>
 
-  <!-- Existing desktop layout is preserved -->
-  <main class="hero">
-    <img class="hero-img" src="assets/top-design.png" alt="Suvi Nutrition Center">
-    <a class="hit home" href="#home" aria-label="Home">Home</a>
-    <a class="hit about" href="#about" aria-label="About Vivega">About Vivega</a>
-    <a class="hit products" href="#products" aria-label="Our Products">Our Products</a>
-    <a class="hit services" href="#services" aria-label="Our Services">Our Services</a>
-    <a class="hit contact" href="#contact" aria-label="Contact Us">Contact Us</a>
-    <a class="hit location" href="#location" aria-label="Our Location">Our Location</a>
-  </main>
-
-  <section class="carousel" id="services" aria-label="Nutrition services">
-    <button class="arrow prev" type="button" aria-label="Previous">‹</button>
-    <div class="viewport">
-      <div class="track" id="track">
-        <div class="card"><img src="assets/cards/card-1.jpg" alt="Weight Management"></div>
-        <div class="card"><img src="assets/cards/card-2.jpg" alt="Digestive Health"></div>
-        <div class="card"><img src="assets/cards/card-3.jpg" alt="Skin Health"></div>
-        <div class="card"><img src="assets/cards/card-4.jpg" alt="Immunity Boost"></div>
-        <div class="card"><img src="assets/cards/card-5.jpg" alt="Kids Nutrition"></div>
-        <div class="card"><img src="assets/cards/card-6.jpg" alt="Joint Health"></div>
-        <div class="card"><img src="assets/cards/card-7.jpg" alt="Healthy Recipes"></div>
-        <div class="card"><img src="assets/cards/card-8.jpg" alt="Lifestyle Guidance"></div>
-        <div class="card"><img src="assets/cards/card-9.jpg" alt="Stress Management"></div>
+    <section class="carousel" id="services" aria-label="Nutrition services">
+      <button class="arrow prev" type="button" aria-label="Previous">‹</button>
+      <div class="viewport">
+        <div class="track" id="track">
+          <div class="card"><img src="assets/cards/card-1.jpg" alt="Weight Management"></div>
+          <div class="card"><img src="assets/cards/card-2.jpg" alt="Digestive Health"></div>
+          <div class="card"><img src="assets/cards/card-3.jpg" alt="Skin Health"></div>
+          <div class="card"><img src="assets/cards/card-4.jpg" alt="Immunity Boost"></div>
+          <div class="card"><img src="assets/cards/card-5.jpg" alt="Kids Nutrition"></div>
+          <div class="card"><img src="assets/cards/card-6.jpg" alt="Joint Health"></div>
+          <div class="card"><img src="assets/cards/card-7.jpg" alt="Healthy Recipes"></div>
+          <div class="card"><img src="assets/cards/card-8.jpg" alt="Lifestyle Guidance"></div>
+          <div class="card"><img src="assets/cards/card-9.jpg" alt="Stress Management"></div>
+        </div>
       </div>
-    </div>
-    <button class="arrow next" type="button" aria-label="Next">›</button>
-  </section>
+      <button class="arrow next" type="button" aria-label="Next">›</button>
+    </section>
+  </div>
 
-  <!-- Mobile-only responsive view based on the supplied reference -->
-  <main class="mobile-design" aria-label="Suvi Nutrition Center mobile homepage">
-    <img src="assets/mobile-reference.png" alt="Suvi Nutrition Center mobile homepage">
-    <a class="m-hit m-home" href="#home" aria-label="Home"></a>
-    <a class="m-hit m-about" href="#about" aria-label="About Vivega"></a>
-    <a class="m-hit m-services" href="#services" aria-label="Our Services"></a>
-    <a class="m-hit m-contact" href="#contact" aria-label="Contact Us"></a>
-    <a class="m-hit m-location" href="#location" aria-label="Our Location"></a>
-    <a class="m-hit m-book" href="#appointment" aria-label="Book Appointment Now"></a>
+  <main class="mobile-view" aria-label="Suvi Nutrition Center mobile website">
+    <div class="mobile-canvas">
+      <img class="mobile-art" src="assets/mobile-home.png" alt="Suvi Nutrition Center mobile homepage">
+      <div class="mobile-nav-cover" aria-hidden="true"></div>
+      <a class="mobile-hit mobile-home" href="#home" aria-label="Home"></a>
+      <a class="mobile-hit mobile-about" href="#about" aria-label="About Vivega"></a>
+      <a class="mobile-hit mobile-products" href="#products" aria-label="Our Products"></a>
+      <a class="mobile-hit mobile-services" href="#services" aria-label="Our Services"></a>
+      <a class="mobile-hit mobile-contact" href="#contact" aria-label="Contact Us"></a>
+      <a class="mobile-hit mobile-location" href="#location" aria-label="Our Location"></a>
+      <a class="mobile-hit mobile-book" href="#appointment" aria-label="Book Appointment Now"></a>
+      <a class="mobile-hit mobile-menu" href="#menu" aria-label="Menu"></a>
+    </div>
   </main>
 </div>
-
 <script>
 const track=document.getElementById('track');
 const prev=document.querySelector('.prev');
 const next=document.querySelector('.next');
-let cards=[...track.children], x=0, paused=false, last=performance.now(), speed=.30;
-
-track.addEventListener('mouseenter',()=>paused=true);
-track.addEventListener('mouseleave',()=>paused=false);
-
-function stepSize(el){return el.getBoundingClientRect().width+9}
-
-function animate(now){
-  const dt=Math.min(40,now-last); last=now;
-  if(!paused){
-    x+=speed*dt/16.67;
-    const lastCard=cards[cards.length-1];
-    const step=stepSize(lastCard);
-    if(x>=step){
-      track.insertBefore(lastCard,track.firstElementChild);
-      cards.unshift(lastCard); cards.pop();
-      x-=step;
+if(track){
+  let cards=[...track.children], x=0, paused=false, last=performance.now(), speed=.30;
+  track.addEventListener('mouseenter',()=>paused=true);
+  track.addEventListener('mouseleave',()=>paused=false);
+  function stepSize(el){return el.getBoundingClientRect().width+9}
+  function animate(now){
+    const dt=Math.min(40,now-last); last=now;
+    if(!paused){
+      x+=speed*dt/16.67;
+      const lastCard=cards[cards.length-1], step=stepSize(lastCard);
+      if(x>=step){track.insertBefore(lastCard,track.firstElementChild);cards.unshift(lastCard);cards.pop();x-=step}
+      track.style.transform=`translate3d(${x}px,0,0)`;
     }
-    track.style.transform=`translate3d(${x}px,0,0)`;
+    requestAnimationFrame(animate);
   }
+  prev.onclick=()=>{const lastCard=cards[cards.length-1],step=stepSize(lastCard);track.insertBefore(lastCard,track.firstElementChild);cards.unshift(lastCard);cards.pop();x+=step};
+  next.onclick=()=>{const first=cards.shift(),step=stepSize(first);cards.push(first);track.appendChild(first);x-=step};
   requestAnimationFrame(animate);
 }
-prev.onclick=()=>{
-  const lastCard=cards[cards.length-1], step=stepSize(lastCard);
-  track.insertBefore(lastCard,track.firstElementChild);
-  cards.unshift(lastCard); cards.pop(); x+=step;
-};
-next.onclick=()=>{
-  const first=cards.shift(), step=stepSize(first);
-  cards.push(first); track.appendChild(first); x-=step;
-};
-requestAnimationFrame(animate);
 </script>
 </body>
 </html>
