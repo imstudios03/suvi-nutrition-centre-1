@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Suvi Nutrition Center | Vivega</title>
+<meta name="description" content="Suvi Nutrition Center - Personalized nutrition guidance for a healthier and happier life.">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;font-family:Arial,Helvetica,sans-serif}
+.page{position:fixed;inset:0;width:100vw;height:100vh;overflow:hidden;background:#fff}
+.hero{position:absolute;left:0;top:0;width:100vw;height:calc(100vh - 128px);overflow:hidden;line-height:0}
+.hero-img{display:block;width:100%;height:100%;object-fit:fill}
+ .hit{
+position:absolute;z-index:20;display:flex;align-items:center;justify-content:center;
+height:7.2%;border-radius:999px;cursor:pointer;text-decoration:none;
+font-family:Arial,Helvetica,sans-serif;font-size:clamp(13px,1.05vw,19px);font-weight:800;
+letter-spacing:.1px;color:#fff;
+background:linear-gradient(180deg,#39d4ff 0%,#11a9ef 35%,#0788db 68%,#0568c2 100%);
+border:2px solid #00c7ff;
+box-shadow:inset 0 2px 2px rgba(255,255,255,.8),inset 0 -3px 5px rgba(0,47,130,.55),0 3px 7px rgba(0,0,0,.3);
+text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:nowrap
+}
+.hit:before{font-size:1em;margin-right:8px}
+ .hit.home{left:3.5%;top:31.5%;width:12.8%}
+.hit.about{left:16.5%;top:31.5%;width:12.8%}
+.hit.products{left:29.5%;top:31.5%;width:12.8%}
+.hit.services{left:50%;top:31.5%;width:12.8%}
+.hit.contact{left:63%;top:31.5%;width:12.8%}
+.hit.location{left:76%;top:31.5%;width:12.8%}
+.hit.products:before{content:"●";font-size:.72em}
+
+.hit.home:before{content:"⌂"}
+.hit.about:before{content:"●";font-size:.72em}
+.hit.services:before{content:"♥"}
+.hit.contact:before{content:"☎"}
+.hit.location:before{content:"●";font-size:.72em}
+.hit:hover{filter:brightness(1.05);transform:translateY(-1px)}
+
+.carousel{position:absolute;left:0;bottom:0;width:100vw;height:128px;padding:7px 3.1% 8px;background:#fff;overflow:hidden}
+.viewport{position:relative;width:100%;height:100%;overflow:hidden;border-radius:18px;box-shadow:0 3px 13px rgba(0,0,0,.14);background:#fff}
+.track{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;gap:9px;will-change:transform}
+.card{flex:0 0 clamp(105px,8.1vw,145px);height:112px;border-radius:13px;overflow:hidden;background:#fff;box-shadow:0 1px 7px rgba(0,0,0,.15);padding:3px}
+.card img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+.arrow{position:absolute;z-index:10;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:#075b26;color:#fff;font-size:34px;line-height:38px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.prev{left:1%}.next{right:1%}
+@media(max-width:700px){.hit{font-size:12px;border-width:2px}.hit:before{margin-right:5px}
+.hero{height:calc(100vh - 104px)}
+.carousel{height:104px;padding:5px 3% 6px}
+.card{flex-basis:82px;height:92px}
+.arrow{width:34px;height:34px;font-size:28px;line-height:30px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <main class="hero">
+    <img class="hero-img" src="assets/top-design.png" alt="Suvi Nutrition Center">
+    <a class="hit home" href="#home" aria-label="Home">Home</a>
+    <a class="hit about" href="#about" aria-label="About Vivega">About Vivega</a>
+    <a class="hit products" href="#products" aria-label="Our Products">Our Products</a><a class="hit services" href="#services" aria-label="Our Services">Our Services</a>
+    <a class="hit contact" href="#contact" aria-label="Contact Us">Contact Us</a>
+    <a class="hit location" href="#location" aria-label="Our Location">Our Location</a>
+  </main>
+
+  <section class="carousel" id="services" aria-label="Nutrition services">
+    <button class="arrow prev" type="button" aria-label="Previous">‹</button>
+    <div class="viewport">
+      <div class="track" id="track">
+        <div class="card"><img src="assets/cards/card-1.jpg" alt="Weight Management"></div>
+        <div class="card"><img src="assets/cards/card-2.jpg" alt="Digestive Health"></div>
+        <div class="card"><img src="assets/cards/card-3.jpg" alt="Skin Health"></div>
+        <div class="card"><img src="assets/cards/card-4.jpg" alt="Immunity Boost"></div>
+        <div class="card"><img src="assets/cards/card-5.jpg" alt="Kids Nutrition"></div>
+        <div class="card"><img src="assets/cards/card-6.jpg" alt="Joint Health"></div>
+        <div class="card"><img src="assets/cards/card-7.jpg" alt="Healthy Recipes"></div>
+        <div class="card"><img src="assets/cards/card-8.jpg" alt="Lifestyle Guidance"></div>
+        <div class="card"><img src="assets/cards/card-9.jpg" alt="Stress Management"></div>
+      </div>
+    </div>
+    <button class="arrow next" type="button" aria-label="Next">›</button>
+  </section>
+</div>
+<script>
+const track=document.getElementById('track');
+const prev=document.querySelector('.prev');
+const next=document.querySelector('.next');
+let cards=[...track.children], x=0, paused=false, last=performance.now(), speed=.30;
+
+track.addEventListener('mouseenter',()=>paused=true);
+track.addEventListener('mouseleave',()=>paused=false);
+
+function stepSize(el){return el.getBoundingClientRect().width+9}
+
+function animate(now){
+  const dt=Math.min(40,now-last); last=now;
+  if(!paused){
+    x+=speed*dt/16.67;                 // left -> right
+    const lastCard=cards[cards.length-1];
+    const step=stepSize(lastCard);
+    if(x>=step){
+      track.insertBefore(lastCard,track.firstElementChild);
+      cards.unshift(lastCard); cards.pop();
+      x-=step;
+    }
+    track.style.transform=`translate3d(${x}px,0,0)`;
+  }
+  requestAnimationFrame(animate);
+}
+prev.onclick=()=>{
+  const lastCard=cards[cards.length-1], step=stepSize(lastCard);
+  track.insertBefore(lastCard,track.firstElementChild);
+  cards.unshift(lastCard); cards.pop(); x+=step;
+};
+next.onclick=()=>{
+  const first=cards.shift(), step=stepSize(first);
+  cards.push(first); track.appendChild(first); x-=step;
+};
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>
+
+<style>
+.hit.home{
+  outline: 8px solid rgba(255,255,255,.92);
+  outline-offset: 0;
+}
+</style>
