@@ -7,11 +7,14 @@
 <meta name="description" content="Suvi Nutrition Center - Personalized nutrition guidance for a healthier and happier life.">
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;font-family:Arial,Helvetica,sans-serif}
-.page{position:fixed;inset:0;width:100vw;height:100vh;overflow:hidden;background:#fff}
+html,body{margin:0;width:100%;min-height:100%;background:#fff;font-family:Arial,Helvetica,sans-serif}
+body{overflow-x:hidden}
+.page{position:relative;width:100%;min-height:100vh;background:#fff}
+
+/* ---------------- DESKTOP ---------------- */
 .hero{position:absolute;left:0;top:0;width:100vw;height:calc(100vh - 128px);overflow:hidden;line-height:0}
 .hero-img{display:block;width:100%;height:100%;object-fit:fill}
- .hit{
+.hit{
 position:absolute;z-index:20;display:flex;align-items:center;justify-content:center;
 height:7.2%;border-radius:999px;cursor:pointer;text-decoration:none;
 font-family:Arial,Helvetica,sans-serif;font-size:clamp(13px,1.05vw,19px);font-weight:800;
@@ -22,14 +25,13 @@ box-shadow:inset 0 2px 2px rgba(255,255,255,.8),inset 0 -3px 5px rgba(0,47,130,.
 text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:nowrap
 }
 .hit:before{font-size:1em;margin-right:8px}
- .hit.home{left:3.5%;top:31.5%;width:12.8%}
+.hit.home{left:3.5%;top:31.5%;width:12.8%}
 .hit.about{left:16.5%;top:31.5%;width:12.8%}
 .hit.products{left:29.5%;top:31.5%;width:12.8%}
 .hit.services{left:50%;top:31.5%;width:12.8%}
 .hit.contact{left:63%;top:31.5%;width:12.8%}
 .hit.location{left:76%;top:31.5%;width:12.8%}
 .hit.products:before{content:"●";font-size:.72em}
-
 .hit.home:before{content:"⌂"}
 .hit.about:before{content:"●";font-size:.72em}
 .hit.services:before{content:"♥"}
@@ -44,21 +46,76 @@ text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:nowrap
 .card img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
 .arrow{position:absolute;z-index:10;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:#075b26;color:#fff;font-size:34px;line-height:38px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .prev{left:1%}.next{right:1%}
-@media(max-width:700px){.hit{font-size:12px;border-width:2px}.hit:before{margin-right:5px}
-.hero{height:calc(100vh - 104px)}
-.carousel{height:104px;padding:5px 3% 6px}
-.card{flex-basis:82px;height:92px}
-.arrow{width:34px;height:34px;font-size:28px;line-height:30px}
+
+/* Mobile reference design */
+.mobile-design{display:none}
+
+/* ---------------- MOBILE ---------------- */
+@media(max-width:700px){
+  html,body{overflow-x:hidden;overflow-y:auto}
+  .page{width:100%;min-height:100vh;height:auto;overflow:visible}
+  .hero,.carousel{display:none}
+
+  .mobile-design{
+    display:block;
+    position:relative;
+    width:100%;
+    line-height:0;
+    background:#fff;
+  }
+  .mobile-design > img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-width:none;
+    user-select:none;
+    -webkit-user-drag:none;
+  }
+
+  /* Transparent interactive areas placed over the supplied mobile reference */
+  .m-hit{
+    position:absolute;
+    z-index:5;
+    display:block;
+    background:transparent;
+    border:0;
+    border-radius:999px;
+    padding:0;
+    margin:0;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .m-home{left:2.2%;top:15.7%;width:19.8%;height:2.8%}
+  .m-about{left:23.0%;top:15.7%;width:20.5%;height:2.8%}
+  .m-services{left:44.5%;top:15.7%;width:29.5%;height:2.8%}
+  .m-contact{left:12.0%;top:19.0%;width:27.5%;height:2.8%}
+  .m-location{left:39.5%;top:19.0%;width:31.0%;height:2.8%}
+  .m-book{left:50.0%;top:30.2%;width:36.0%;height:3.6%}
+
+  /* Keep the mobile page easy to use on very small screens */
+  @media(max-width:360px){
+    .m-home,.m-about,.m-services{height:3.1%}
+    .m-contact,.m-location{height:3.1%}
+  }
+}
+@media(min-width:701px){
+  .hit.home{
+    outline:8px solid rgba(255,255,255,.92);
+    outline-offset:0;
+  }
 }
 </style>
 </head>
 <body>
 <div class="page">
+
+  <!-- Existing desktop layout is preserved -->
   <main class="hero">
     <img class="hero-img" src="assets/top-design.png" alt="Suvi Nutrition Center">
     <a class="hit home" href="#home" aria-label="Home">Home</a>
     <a class="hit about" href="#about" aria-label="About Vivega">About Vivega</a>
-    <a class="hit products" href="#products" aria-label="Our Products">Our Products</a><a class="hit services" href="#services" aria-label="Our Services">Our Services</a>
+    <a class="hit products" href="#products" aria-label="Our Products">Our Products</a>
+    <a class="hit services" href="#services" aria-label="Our Services">Our Services</a>
     <a class="hit contact" href="#contact" aria-label="Contact Us">Contact Us</a>
     <a class="hit location" href="#location" aria-label="Our Location">Our Location</a>
   </main>
@@ -80,7 +137,19 @@ text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:nowrap
     </div>
     <button class="arrow next" type="button" aria-label="Next">›</button>
   </section>
+
+  <!-- Mobile-only responsive view based on the supplied reference -->
+  <main class="mobile-design" aria-label="Suvi Nutrition Center mobile homepage">
+    <img src="assets/mobile-reference.png" alt="Suvi Nutrition Center mobile homepage">
+    <a class="m-hit m-home" href="#home" aria-label="Home"></a>
+    <a class="m-hit m-about" href="#about" aria-label="About Vivega"></a>
+    <a class="m-hit m-services" href="#services" aria-label="Our Services"></a>
+    <a class="m-hit m-contact" href="#contact" aria-label="Contact Us"></a>
+    <a class="m-hit m-location" href="#location" aria-label="Our Location"></a>
+    <a class="m-hit m-book" href="#appointment" aria-label="Book Appointment Now"></a>
+  </main>
 </div>
+
 <script>
 const track=document.getElementById('track');
 const prev=document.querySelector('.prev');
@@ -95,7 +164,7 @@ function stepSize(el){return el.getBoundingClientRect().width+9}
 function animate(now){
   const dt=Math.min(40,now-last); last=now;
   if(!paused){
-    x+=speed*dt/16.67;                 // left -> right
+    x+=speed*dt/16.67;
     const lastCard=cards[cards.length-1];
     const step=stepSize(lastCard);
     if(x>=step){
@@ -120,10 +189,3 @@ requestAnimationFrame(animate);
 </script>
 </body>
 </html>
-
-<style>
-.hit.home{
-  outline: 8px solid rgba(255,255,255,.92);
-  outline-offset: 0;
-}
-</style>
