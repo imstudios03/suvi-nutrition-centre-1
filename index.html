@@ -33,31 +33,43 @@ body{overflow-x:hidden}
 .arrow{position:absolute;z-index:10;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:#075b26;color:#fff;font-size:34px;line-height:38px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .prev{left:1%}.next{right:1%}
 
-/* MOBILE: use the supplied professional mobile reference as the visual base.
-   This prevents the old desktop artwork from being stretched into a distorted
-   portrait layout. Transparent HTML hit areas keep the important controls usable. */
+/* MOBILE: professional responsive layout */
 .mobile-view{display:none}
-.mobile-canvas{position:relative;width:100%;max-width:720px;margin:0 auto;line-height:0;background:#fff}
+.mobile-canvas{position:relative;width:100%;max-width:720px;margin:0 auto;line-height:0;background:#fff;overflow:hidden}
 .mobile-art{display:block;width:100%;height:auto}
-.mobile-nav-cover{position:absolute;left:0;right:0;top:15.0%;height:11.5%;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,.80));z-index:5}
-.mobile-hit{position:absolute;z-index:10;display:flex;align-items:center;justify-content:center;text-decoration:none;color:transparent;background:transparent;border:0;border-radius:999px}
+.mobile-nav{display:none}
+.mobile-nav a{min-height:48px;padding:8px 6px;border-radius:28px;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;font:800 15px/1 Arial,Helvetica,sans-serif;color:#17351f;background:linear-gradient(180deg,#f7fff8 0%,#dff8e5 100%);border:1px solid rgba(255,255,255,.95);box-shadow:0 4px 10px rgba(0,0,0,.12),inset 0 1px 2px rgba(255,255,255,.9);white-space:nowrap}
+.mobile-nav a:nth-child(1){background:linear-gradient(180deg,#1e754d,#0d5d39);color:#fff}
+.mobile-nav a:nth-child(2){background:linear-gradient(180deg,#e4fce8,#c9f4d2)}
+.mobile-nav a:nth-child(3){background:linear-gradient(180deg,#ffe4f5,#f9cbe8)}
+.mobile-nav a:nth-child(4){background:linear-gradient(180deg,#e5f5ff,#cbe8fa)}
+.mobile-nav a:nth-child(5){background:linear-gradient(180deg,#efe2ff,#dcc8f7)}
+.mobile-nav a:nth-child(6){background:linear-gradient(180deg,#fff1d8,#ffe2a8)}
+.mobile-nav a:active{transform:scale(.97)}
 .mobile-carousel{width:100%;max-width:720px;margin:0 auto;padding:10px 12px 18px;background:#fff;overflow:hidden;position:relative}
 .mobile-carousel .mviewport{overflow:hidden;border-radius:18px;box-shadow:0 3px 13px rgba(0,0,0,.14);background:#fff;padding:8px 0}
 .mobile-carousel .mtrack{display:flex;gap:10px;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
-.mobile-card{flex:0 0 145px;height:112px;border-radius:13px;overflow:hidden;background:#fff;box-shadow:0 1px 7px rgba(0,0,0,.15);padding:3px}
+.mobile-card{flex:0 0 145px;height:112px;border-radius:13px;overflow:hidden;background:#fff;box-shadow:0 1px 7px rgba(0,0,0,.15);padding:3px;display:block}
 .mobile-card img{display:block;width:100%;height:100%;object-fit:contain}
 .mobile-carousel .marrow{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;border-radius:50%;background:#075b26;color:#fff;font-size:32px;line-height:36px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .mobile-carousel .mnext{right:8px}.mobile-carousel .mprev{left:8px}
 .mobile-dots{text-align:center;padding-top:8px}.mobile-dots span{display:inline-block;width:8px;height:8px;border-radius:50%;background:#c7c7c7;margin:0 5px}.mobile-dots span:first-child{background:#08722e}
-.mobile-home{left:2.8%;top:15.7%;width:26%;height:4.6%}
-.mobile-about{left:28.3%;top:15.7%;width:34%;height:4.6%}
-.mobile-products{left:62.0%;top:15.7%;width:35%;height:4.6%}
-.mobile-services{left:13.0%;top:20.9%;width:30%;height:4.6%}
-.mobile-contact{left:43.0%;top:20.9%;width:31%;height:4.6%}
-.mobile-location{left:65.0%;top:20.9%;width:31%;height:4.6%}
-.mobile-book{left:48%;top:49.8%;width:45%;height:5.5%}
-.mobile-menu{right:2%;top:0.8%;width:9%;height:4.8%}
 
+/* MOBILE CLICK MAP + MENU: keep the artwork's original visible buttons and only add reliable hit areas */
+.image-hit{position:absolute;z-index:30;display:block;text-decoration:none;background:transparent;border-radius:999px}
+.home-hit{left:2.8%;top:15.1%;width:24.8%;height:5.1%}
+.about-hit{left:28.1%;top:15.1%;width:34%;height:5.1%}
+.services-hit{left:63%;top:15.1%;width:34%;height:5.1%}
+.contact-hit{left:13.2%;top:20.7%;width:35.3%;height:5.3%}
+.location-hit{left:49.3%;top:20.7%;width:35.5%;height:5.3%}
+.book-hit{left:47.5%;top:49.4%;width:47%;height:6.0%}
+.mobile-menu-btn{position:absolute;z-index:50;right:1.8%;top:1.0%;width:10.5%;height:5.2%;border:0;background:transparent;color:transparent;font-size:0;cursor:pointer}
+.mobile-menu-panel{position:absolute;z-index:100;right:3%;top:6.2%;width:min(88%,330px);padding:12px;border-radius:18px;background:rgba(255,255,255,.98);box-shadow:0 10px 30px rgba(0,0,0,.28);border:2px solid rgba(15,99,50,.18);display:none;line-height:normal}
+.mobile-menu-panel.open{display:flex;flex-direction:column;gap:8px}
+.mobile-menu-panel .menu-head{display:flex;align-items:center;justify-content:space-between;padding:5px 4px 8px;color:#0d5d39;font:800 16px/1.2 Arial,sans-serif}
+.mobile-menu-panel .menu-head button{width:34px;height:34px;border:0;border-radius:50%;background:#0d5d39;color:#fff;font-size:25px;line-height:30px;cursor:pointer}
+.mobile-menu-panel>a{display:flex;align-items:center;min-height:44px;padding:9px 13px;border-radius:12px;text-decoration:none;color:#123b22;background:#f2fbf4;border:1px solid #d6edda;font:800 14px/1.2 Arial,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.mobile-menu-panel>a:active{transform:scale(.98)}
 @media(max-width:700px){
   html,body{overflow-x:hidden}
   .desktop-view{display:none}
@@ -100,29 +112,47 @@ body{overflow-x:hidden}
   <main class="mobile-view" aria-label="Suvi Nutrition Center mobile website">
     <div class="mobile-canvas">
       <img class="mobile-art" src="assets/mobile-top.png" alt="Suvi Nutrition Center mobile homepage">
-      <div class="mobile-nav-cover" aria-hidden="true"></div>
-      <a class="mobile-hit mobile-home" href="https://wa.me/916382401380?text=Hello%20Suvi%20Nutrition%20Center%2C%20I%20would%20like%20to%20know%20more." aria-label="Home"></a>
-      <a class="mobile-hit mobile-about" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20know%20about%20Vivega%20and%20your%20nutrition%20services." aria-label="About Vivega"></a>
-      <a class="mobile-hit mobile-products" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20know%20about%20your%20products." aria-label="Our Products"></a>
-      <a class="mobile-hit mobile-services" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20know%20about%20your%20services." aria-label="Our Services"></a>
-      <a class="mobile-hit mobile-contact" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20contact%20Suvi%20Nutrition%20Center." aria-label="Contact Us"></a>
-      <a class="mobile-hit mobile-location" href="https://wa.me/916382401380?text=Hello%2C%20please%20share%20your%20location%20and%20clinic%20details." aria-label="Our Location"></a>
-      <a class="mobile-hit mobile-book" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20to%20book%20a%20nutrition%20appointment." aria-label="Book Appointment Now"></a>
-      <a class="mobile-hit mobile-menu" href="https://wa.me/916382401380?text=Hello%2C%20please%20share%20the%20menu%20and%20available%20services." aria-label="Menu"></a>
+
+      <!-- The artwork already contains the visible navigation buttons. These invisible hit areas
+           keep the design untouched while making each button reliably clickable. -->
+      <a class="image-hit home-hit" href="https://wa.me/916382401380?text=Hello%20Suvi%20Nutrition%20Center%20%F0%9F%8C%BF%20I%20would%20love%20to%20know%20more%20about%20your%20nutrition%20guidance.%20%F0%9F%98%8A%F0%9F%92%9A" aria-label="Home"></a>
+      <a class="image-hit about-hit" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20would%20love%20to%20know%20more%20about%20Vivega%20and%20your%20personalized%20nutrition%20services.%20%F0%9F%8C%BF%F0%9F%92%9A%F0%9F%98%8A" aria-label="About Vivega"></a>
+      <a class="image-hit services-hit" href="https://wa.me/916382401380?text=Hello%20%F0%9F%8C%B8%20I%20would%20love%20to%20know%20more%20about%20your%20nutrition%20services.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A" aria-label="Our Services"></a>
+      <a class="image-hit contact-hit" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20would%20like%20to%20contact%20Suvi%20Nutrition%20Center.%20Could%20you%20please%20help%20me%3F%20%F0%9F%98%8A%F0%9F%92%9A" aria-label="Contact Us"></a>
+      <a class="image-hit location-hit" href="https://wa.me/916382401380?text=Hello%20%F0%9F%93%8D%20Could%20you%20please%20share%20your%20clinic%20location%20and%20timing%20details%3F%20Thank%20you%20%F0%9F%98%8A%F0%9F%92%9A" aria-label="Our Location"></a>
+      <a class="image-hit book-hit" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20would%20love%20to%20book%20a%20nutrition%20appointment.%20Please%20share%20the%20available%20date%20and%20time.%20%F0%9F%93%85%F0%9F%98%8A%F0%9F%92%9A" aria-label="Book Appointment Now"></a>
+
+      <!-- Hamburger opens the mobile menu; it does NOT go to WhatsApp. -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <div class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
+        <div class="menu-head">
+          <strong>Suvi Nutrition Center</strong>
+          <button id="mobileMenuClose" type="button" aria-label="Close menu">×</button>
+        </div>
+        <a href="https://wa.me/916382401380?text=Hello%20%F0%9F%8C%BF%20I%20am%20interested%20in%20Suvi%20Nutrition%20Center.%20Please%20help%20me.%20%F0%9F%98%8A%F0%9F%92%9A">🏠 Home</a>
+        <a href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20would%20love%20to%20know%20more%20about%20Vivega.%20%F0%9F%8C%BF%F0%9F%92%9A">👩‍⚕️ About Vivega</a>
+        <a href="https://wa.me/916382401380?text=Hello%20%F0%9F%8C%B1%20I%20would%20like%20to%20know%20about%20your%20products.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A">🛍️ Our Products</a>
+        <a href="https://wa.me/916382401380?text=Hello%20%F0%9F%92%9A%20I%20would%20like%20to%20know%20about%20your%20mission%20and%20wellness%20approach.%20%F0%9F%8C%BF%F0%9F%98%8A">🎯 Our Mission</a>
+        <a href="https://wa.me/916382401380?text=Hello%20%F0%9F%8C%B8%20I%20would%20love%20to%20know%20more%20about%20your%20nutrition%20services.%20%F0%9F%98%8A%F0%9F%92%9A">💚 Our Services</a>
+        <a href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20would%20like%20to%20contact%20Suvi%20Nutrition%20Center.%20Please assist me.%20%F0%9F%98%8A%F0%9F%92%9A">📞 Contact Us</a>
+        <a href="https://wa.me/916382401380?text=Hello%20%F0%9F%93%8D%20Please share your clinic location and working hours.%20Thank you%20%F0%9F%98%8A%F0%9F%92%9A">📍 Our Location</a>
+        <a href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20would%20like%20to%20book%20a%20nutrition%20appointment.%20Please%20help%20me%20with%20the%20available%20slots.%20%F0%9F%93%85%F0%9F%98%8A%F0%9F%92%9A">📅 Book Appointment</a>
+      </div>
     </div>
     <section class="mobile-carousel" aria-label="Nutrition services carousel">
       <button class="marrow mprev" type="button" aria-label="Previous">‹</button>
       <div class="mviewport">
         <div class="mtrack" id="mtrack">
-          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Weight%20Management."><img src="assets/cards/card-1.jpg" alt="Weight Management"></a>
-          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Digestive%20Health."><img src="assets/cards/card-2.jpg" alt="Digestive Health"></a>
-          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Skin%20Health."><img src="assets/cards/card-3.jpg" alt="Skin Health"></a>
-          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Immunity%20Boost."><img src="assets/cards/card-4.jpg" alt="Immunity Boost"></a>
-          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Kids%20Nutrition."><img src="assets/cards/card-5.jpg" alt="Kids Nutrition"></a>
-          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Joint%20Health."><img src="assets/cards/card-6.jpg" alt="Joint Health"></a>
-          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20would%20like%20Healthy%20Recipes%20guidance."><img src="assets/cards/card-7.jpg" alt="Healthy Recipes"></a>
-          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Lifestyle%20Guidance."><img src="assets/cards/card-8.jpg" alt="Lifestyle Guidance"></a>
-          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%2C%20I%20am%20interested%20in%20Stress%20Management."><img src="assets/cards/card-9.jpg" alt="Stress Management"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20am%20interested%20in%20Weight%20Management.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A"><img src="assets/cards/card-1.jpg" alt="Weight Management"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20am%20interested%20in%20Digestive%20Health.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A"><img src="assets/cards/card-2.jpg" alt="Digestive Health"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20am%20interested%20in%20Skin%20Health.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A"><img src="assets/cards/card-3.jpg" alt="Skin Health"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20am%20interested%20in%20Immunity%20Boost.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A"><img src="assets/cards/card-4.jpg" alt="Immunity Boost"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20am%20interested%20in%20Kids%20Nutrition.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A"><img src="assets/cards/card-5.jpg" alt="Kids Nutrition"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20am%20interested%20in%20Joint%20Health.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A"><img src="assets/cards/card-6.jpg" alt="Joint Health"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20would%20like%20Healthy%20Recipes%20guidance.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A"><img src="assets/cards/card-7.jpg" alt="Healthy Recipes"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20am%20interested%20in%20Lifestyle%20Guidance.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A"><img src="assets/cards/card-8.jpg" alt="Lifestyle Guidance"></a>
+          <a class="mobile-card" href="https://wa.me/916382401380?text=Hello%20%F0%9F%91%8B%20I%20am%20interested%20in%20Stress%20Management.%20Please%20share%20the%20details.%20%F0%9F%98%8A%F0%9F%92%9A"><img src="assets/cards/card-9.jpg" alt="Stress Management"></a>
         </div>
       </div>
       <button class="marrow mnext" type="button" aria-label="Next">›</button>
@@ -154,25 +184,60 @@ if(track){
   requestAnimationFrame(animate);
 }
 
+const mobileMenuBtn=document.getElementById('mobileMenuBtn');
+const mobileMenuPanel=document.getElementById('mobileMenuPanel');
+const mobileMenuClose=document.getElementById('mobileMenuClose');
+function setMobileMenu(open){
+  if(!mobileMenuPanel||!mobileMenuBtn) return;
+  mobileMenuPanel.classList.toggle('open',open);
+  mobileMenuPanel.setAttribute('aria-hidden',String(!open));
+  mobileMenuBtn.setAttribute('aria-expanded',String(open));
+}
+if(mobileMenuBtn){ mobileMenuBtn.addEventListener('click',()=>setMobileMenu(true)); }
+if(mobileMenuClose){ mobileMenuClose.addEventListener('click',()=>setMobileMenu(false)); }
+if(mobileMenuPanel){ mobileMenuPanel.addEventListener('click',(e)=>{ if(e.target===mobileMenuPanel) setMobileMenu(false); }); }
+document.addEventListener('click',(e)=>{ if(mobileMenuPanel?.classList.contains('open') && !mobileMenuPanel.contains(e.target) && e.target!==mobileMenuBtn){ setMobileMenu(false); }});
+
 const mtrack=document.getElementById('mtrack');
 const mprev=document.querySelector('.mprev');
 const mnext=document.querySelector('.mnext');
 if(mtrack){
   let mx=0, mpaused=false, mlast=performance.now();
-  const mstep=155;
+  const getStep=()=>{
+    const first=mtrack.firstElementChild;
+    if(!first) return 155;
+    return first.getBoundingClientRect().width + 10;
+  };
   mtrack.addEventListener('touchstart',()=>mpaused=true,{passive:true});
   mtrack.addEventListener('touchend',()=>mpaused=false,{passive:true});
+  mtrack.addEventListener('mouseenter',()=>mpaused=true);
+  mtrack.addEventListener('mouseleave',()=>mpaused=false);
   function ma(now){
-    const dt=Math.min(40,now-mlast); mlast=now;
+    const dt=Math.min(50,now-mlast); mlast=now;
     if(!mpaused){
-      mx-=0.42*dt/16.67;
-      if(Math.abs(mx)>=mstep){ const first=mtrack.firstElementChild; mtrack.appendChild(first); mx+=mstep; }
+      mx -= 0.9 * dt / 16.67;
+      const step=getStep();
+      if(Math.abs(mx)>=step){
+        const first=mtrack.firstElementChild;
+        mtrack.appendChild(first);
+        mx += step;
+      }
       mtrack.style.transform=`translate3d(${mx}px,0,0)`;
     }
     requestAnimationFrame(ma);
   }
-  mprev.onclick=()=>{const last=mtrack.lastElementChild;mtrack.insertBefore(last,mtrack.firstElementChild);mx-=mstep};
-  mnext.onclick=()=>{const first=mtrack.firstElementChild;mtrack.appendChild(first);mx+=mstep};
+  mprev.addEventListener('click',()=>{
+    const last=mtrack.lastElementChild, step=getStep();
+    mtrack.insertBefore(last,mtrack.firstElementChild);
+    mx -= step;
+    mtrack.style.transform=`translate3d(${mx}px,0,0)`;
+  });
+  mnext.addEventListener('click',()=>{
+    const first=mtrack.firstElementChild, step=getStep();
+    mtrack.appendChild(first);
+    mx += step;
+    mtrack.style.transform=`translate3d(${mx}px,0,0)`;
+  });
   requestAnimationFrame(ma);
 }
 </script>
